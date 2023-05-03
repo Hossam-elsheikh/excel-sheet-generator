@@ -16,11 +16,14 @@ const generateTable = () => {
     if(rowsNumber>0 && columnsNumber>0){
         tableExists = true
     }
+    else{
+        swal("you must specify 1 column and 1 row at least!")
+    }
 }
 
 const ExportToExcel = (type, fn, dl) => {
     if(!tableExists){
-        return
+        return   swal("nothing to export!, generate first.")
     }
     var elt = table
     var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" })
